@@ -1,6 +1,6 @@
-require "geek_painter"
+require "lib/geek_painter"
 
-painting = GeekPainter.new.paint do
+painting = GeekPainter.paint do
   trace "[".in    :brown
   trace "\\u".in  :red
   trace ":".in    :yellow
