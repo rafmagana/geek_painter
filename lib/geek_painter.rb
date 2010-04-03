@@ -1,8 +1,7 @@
-require 'lib/geek_painter/string'
-
-require 'lib/geek_painter/escaping_tools'
-require 'lib/geek_painter/palette'
-require 'lib/geek_painter/canvas'
+require 'geek_painter/escaping_tools'
+require 'geek_painter/string'
+require 'geek_painter/palette'
+require 'geek_painter/canvas'
 
 module GeekPainter
   def self.paint(&block)

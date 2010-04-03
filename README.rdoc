@@ -1,11 +1,15 @@
-= geek painter
+== Geek Painter
 
 A very simple DSL to generate a colored shell prompt to use in *nix OS
 
+== Installation
+	
+	gem install geek_painter
+	
 == Usage
 	
 	#put the following lines in a file (ie. geek_painter_client.rb or whatever you want)
-	painting = GeekPainter.new.paint do
+	painting = GeekPainter.paint do
 	  trace "[".in    :brown
 	  trace "\\u".in  :red
 	  trace ":".in    :yellow

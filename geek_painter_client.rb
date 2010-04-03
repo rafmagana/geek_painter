@@ -1,4 +1,5 @@
-require "lib/geek_painter"
+require "rubygems"
+require "geek_painter"
 
 painting = GeekPainter.paint do
   trace "[".in    :brown
@@ -12,4 +13,7 @@ painting = GeekPainter.paint do
 end
 
 painting.print_raw
-#painting.show
+# >> 
+# >> \[\033[0;33m\][\[\033[0;31m\]\u\[\033[1;33m\]:\[\033[0;31m\]\h\[\033[0;35m\]] \[\033[0m\]\w \[\033[1;33m\]$(__git_ps1)\[\033[0m\] $ \[\033[0m\]
+# >> 
+# >> copy the string above and put it in your ~/.bashrc or ~/.bash_profile like this => PS1='the_string'
