@@ -1,0 +1,42 @@
+= geek painter
+
+A very simple DSL to generate a colored shell prompt to use in *nix OS
+
+== Usage
+	
+	#put the following lines in a file (ie. geek_painter_client.rb or whatever you want)
+	painting = GeekPainter.new.paint do
+	  trace "[".in    :brown
+	  trace "\\u".in  :red
+	  trace ":".in    :yellow
+	  trace "\\h".in  :red
+	  trace "] ".in   :magenta
+	  trace "\\w ".in :default
+	  trace "\$(__git_ps1)".in :yellow
+	  trace " $ ".reset
+	end
+	
+	#it shows the actual string ready to be copied and pasted in ~/.bashrc or ~/.bash_profile files like this => PS1='the_string'
+	# just do: $ruby geek_painter_client.rb
+	painting.print_raw
+	
+	#the GeekPainter#show method is meant to be used when geek painter is used like this:
+	#
+	#  in ~/.bashrc
+	#	    PS1='$(ruby geek_painter_client.rb)'
+	painting.show
+
+
+== Note on Patches/Pull Requests
+ 
+* Fork the project.
+* Make your feature addition or bug fix.
+* Add tests for it. This is important so I don't break it in a
+  future version unintentionally.
+* Commit, do not mess with rakefile, version, or history.
+  (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
+* Send me a pull request. Bonus points for topic branches.
+
+== Copyright
+
+Copyright (c) 2010 Rafael Magaña. See LICENSE for details.
