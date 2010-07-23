@@ -1,12 +1,10 @@
 require 'geek_painter/escaping_tools'
-require 'geek_painter/string'
-require 'geek_painter/palette'
 require 'geek_painter/canvas'
 
 module GeekPainter
   def self.paint(&block)
-    @canvas = Canvas.new
-    @canvas.instance_eval(&block)
-    @canvas
+    canvas = Canvas.new
+    canvas.instance_eval(&block)
+    canvas
   end
 end

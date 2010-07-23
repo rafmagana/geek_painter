@@ -1,6 +1,6 @@
 == Geek Painter
 
-A very simple DSL to generate a colored shell prompt to use in *nix OS
+A very simple DSL to generate colored strings to use in *nix-like OS's terminals
 
 == Installation
 	
@@ -8,28 +8,41 @@ A very simple DSL to generate a colored shell prompt to use in *nix OS
 	
 == Usage
 	
-	#put the following lines in a file (ie. geek_painter_client.rb or whatever you want)
-	painting = GeekPainter.paint do
-	  trace "[".in    :brown
-	  trace "\\u".in  :red
-	  trace ":".in    :yellow
-	  trace "\\h".in  :red
-	  trace "] ".in   :magenta
-	  trace "\\w ".in :default
-	  trace "\$(__git_ps1)".in :yellow
-	  trace " $ ".reset
+=== Generate a valid string to be used as a prompt string (PS1)
+	
+Check this link to see the available variables: http://www.ibm.com/developerworks/linux/library/l-tip-prompt/
+
+Put the following lines in a file (ie. ~/.my_scripts/my_prompt.rb or whatever you want)
+	
+	master_piece = GeekPainter.paint do
+	  label "[".in(:brown).on :blue
+	  label "\\u".in  :red
+	  label ":".in    :yellow
+	  label "\\h".in  :red
+	  label "] ".in(:magenta).on :red
+	  label "\\W ".in :default
+	  label "\$(__git_ps1)".in :yellow <= This might not work if you don't have git installed
 	end
 	
-	#it shows the actual string ready to be copied and pasted in ~/.bashrc or ~/.bash_profile files like this => PS1='the_string'
-	# just do: $ruby geek_painter_client.rb
-	painting.print_raw
+	puts master_piece.prompt
 	
-	#the GeekPainter#show method is meant to be used when geek painter is used like this:
-	#
-	#  in ~/.bashrc
-	#	    PS1='$(ruby geek_painter_client.rb)'
-	painting.show
+Now open your ~/.bash_profile, ~/.bashrc or ~/.profile and put this on it
 
+	PS1=`ruby ~/.my_scripts/my_prompt.rb`
+
+Open a console and you'll see your new shiny and colorful prompt.
+
+=== Generate a valid string to be used as colored text in the terminal
+
+	my_text = GeekPainter.paint do
+		label "Hello, ".in(:red).on(:blue)
+		label "World\n".in(:yellow).on(:cyan)
+
+== Available foreground colors
+
+These colors can be used as a parameter in the "in" method
+
+These colors can be used as a parameter in the "on" method
 
 == Note on Patches/Pull Requests
  
@@ -41,6 +54,10 @@ A very simple DSL to generate a colored shell prompt to use in *nix OS
   (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
 * Send me a pull request. Bonus points for topic branches.
 
+== TODO
+
+	* generate string to be used like this => echo -e "the_string", right now the generated string shows extra characters if used this way.
+	
 == Copyright
 
 Copyright (c) 2010 Rafael Magaña. See LICENSE for details.

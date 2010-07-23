@@ -1,7 +1,10 @@
 require 'helper'
 
 class TestGeekPainter < Test::Unit::TestCase
-  should "probably rename this file and start testing for real" do
-    flunk "hey buddy, you should probably rename this file and start testing for real"
+
+  context "Raf" do
+    should "write tests for his geek_painter gem" do
+      flunk "\n\n\nComing soon! ^_^\n\n\n"
+    end
   end
 end
