@@ -102,10 +102,6 @@ To print the colored text in the Interactive Ruby console (IRb) do the following
 * Commit, do not mess with rakefile, version, or history.
   (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
 * Send me a pull request. Bonus points for topic branches.
-
-== TODO
-
-	* generate string to be used like this => echo -e "the_string", right now the generated string shows extra characters if used this way.
 	
 == Copyright
 
