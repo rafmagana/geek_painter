@@ -25,24 +25,73 @@ Put the following lines in a file (ie. ~/.my_scripts/my_prompt.rb or whatever yo
 	end
 	
 	puts master_piece.prompt
-	
+		
 Now open your ~/.bash_profile, ~/.bashrc or ~/.profile and put this on it
 
 	PS1=`ruby ~/.my_scripts/my_prompt.rb`
 
 Open a console and you'll see your new shiny and colorful prompt.
 
+If you just want to copy and paste the string run the same script like this in a Ruby terminal (irb):
+
+	 puts master_pieces.raw_prompt
+
+Copy the resulting string and paste it in your PS1.
+
 === Generate a valid string to be used as colored text in the terminal
 
 	my_text = GeekPainter.paint do
 		label "Hello, ".in(:red).on(:blue)
-		label "World\n".in(:yellow).on(:cyan)
+		label "World.".in(:yellow).on(:cyan)
+	end
+	
+	puts my_text.raw_text
 
-== Available foreground colors
+In this case "raw_text" will return the following string: 
+	
+	\e[1;31;44mHello, \e[1;33;46mWorld.\e[0m
 
-These colors can be used as a parameter in the "in" method
+Copy it and...
+	
+	$ printf "\e[1;31;44mHello, \e[1;33;46mWorld.\e[0m"
+	
+To print the colored text in the Interactive Ruby console (IRb) do the following
 
-These colors can be used as a parameter in the "on" method
+	puts my_text.text # it will print the colored text itself not the escaped string
+		
+== Available colors
+
+=== Foreground (These colors can be used as a parameter in the "in" method)
+
+	:black
+	:dark_gray
+	:light_gray
+	:light_red
+	:red
+	:light_green
+	:green
+	:yellow
+	:brown
+	:light_blue
+	:blue
+	:light_magenta
+	:magenta
+	:light_cyan
+	:cyan
+	:white
+	:default
+    
+=== Background (These colors can be used as a parameter in the "on" method)
+
+	:black
+	:red
+	:green
+	:brown
+	:blue
+	:magenta
+	:cyan
+	:white
+	:default
 
 == Note on Patches/Pull Requests
  
